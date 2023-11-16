@@ -127,11 +127,11 @@ public class HandShakerCaptureManager {
     }
 
     /* renamed from: b */
-    public final void m325b() {
+    public final void resume() {
         if (Build.VERSION.SDK_INT < 23) {
-            this.mainScanView.m334c();
+            this.mainScanView.resume();
         } else if (ContextCompat.checkSelfPermission(this.activity, "android.permission.CAMERA") == 0) {
-            this.mainScanView.m334c();
+            this.mainScanView.resume();
         } else if (!this.f3847n) {
             ActivityCompat.requestPermissions(this.activity, new String[]{"android.permission.CAMERA"}, f3835b);
             this.f3847n = true;
@@ -143,7 +143,7 @@ public class HandShakerCaptureManager {
     public final void m330a(int i, int[] iArr) {
         if (i == f3835b) {
             if (iArr.length > 0 && iArr[0] == 0) {
-                this.mainScanView.m334c();
+                this.mainScanView.resume();
             } else {
                 error();
             }
@@ -151,9 +151,9 @@ public class HandShakerCaptureManager {
     }
 
     /* renamed from: c */
-    public final void m322c() {
+    public final void pause() {
         this.inactivityTimer.cancel();
-        this.mainScanView.m335b();
+        this.mainScanView.pause();
     }
 
     /* renamed from: d */

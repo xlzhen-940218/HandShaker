@@ -11,11 +11,11 @@ import com.journeyapps.barcodescanner.Size;
 public final class SurfaceHolder$CallbackC0792c implements SurfaceHolder.Callback {
 
     /* renamed from: a */
-    final /* synthetic */ HandShakerCameraPreview f3829a;
+    final /* synthetic */ HandShakerCameraPreview handShakerCameraPreview;
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public SurfaceHolder$CallbackC0792c(HandShakerCameraPreview handShakerCameraPreview) {
-        this.f3829a = handShakerCameraPreview;
+        this.handShakerCameraPreview = handShakerCameraPreview;
     }
 
     @Override // android.view.SurfaceHolder.Callback
@@ -24,7 +24,7 @@ public final class SurfaceHolder$CallbackC0792c implements SurfaceHolder.Callbac
 
     @Override // android.view.SurfaceHolder.Callback
     public final void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-        this.f3829a.f3806q = null;
+        this.handShakerCameraPreview.surfaceSize = null;
     }
 
     @Override // android.view.SurfaceHolder.Callback
@@ -35,7 +35,7 @@ public final class SurfaceHolder$CallbackC0792c implements SurfaceHolder.Callbac
             Log.e(str, "*** WARNING *** surfaceChanged() gave us a null surface!");
             return;
         }
-        this.f3829a.f3806q = new Size(i2, i3);
-        this.f3829a.m342l();
+        this.handShakerCameraPreview.surfaceSize = new Size(i2, i3);
+        this.handShakerCameraPreview.m342l();
     }
 }

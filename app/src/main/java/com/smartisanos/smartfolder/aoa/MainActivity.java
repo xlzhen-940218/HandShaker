@@ -7,6 +7,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
@@ -19,8 +20,13 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 import com.smartisan.trackerlib.Agent;
 import com.smartisanos.smartfolder.aoa.activity.ConnecttedFragment;
 import com.smartisanos.smartfolder.aoa.activity.ConnecttingFragment;
@@ -49,7 +55,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /* loaded from: classes.dex */
-public class MainActivity extends Activity implements ConnecttedFragment.InterfaceC0708a, SSPEventListener {
+public class MainActivity extends AppCompatActivity implements ConnecttedFragment.InterfaceC0708a, SSPEventListener {
 
     /* renamed from: e */
     private ConnecttingFragment f3388e;
@@ -165,6 +171,20 @@ public class MainActivity extends Activity implements ConnecttedFragment.Interfa
             this.f3404b = str;
         }
     }
+
+    public ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
+        if (result.getContents() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Result");
+            builder.setMessage(result.getContents());
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            }).show();
+        }
+    });
 
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {

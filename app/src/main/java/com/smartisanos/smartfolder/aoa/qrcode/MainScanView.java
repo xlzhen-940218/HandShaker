@@ -32,7 +32,7 @@ import java.util.Set;
 public class MainScanView extends FrameLayout {
 
     /* renamed from: a */
-    private HandShakerBarcodeView f3816a;
+    private HandShakerBarcodeView handShakerBarcodeView;
 
     /* renamed from: b */
     private TextView f3817b;
@@ -102,8 +102,8 @@ public class MainScanView extends FrameLayout {
     /* renamed from: a */
     private void m338a(AttributeSet attributeSet) {
         inflate(getContext(), R.layout.layout_scanner, this);
-        this.f3816a = (HandShakerBarcodeView) findViewById(R.id.barcode_surface);
-        this.f3816a.m364a(attributeSet);
+        this.handShakerBarcodeView = (HandShakerBarcodeView) findViewById(R.id.barcode_surface);
+        this.handShakerBarcodeView.m364a(attributeSet);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) getResources().getDimension(R.dimen.scanner_view_finder_width), (int) getResources().getDimension(R.dimen.scanner_view_finder_height));
         layoutParams.addRule(13);
         ((FrameLayout) findViewById(R.id.scan_frame)).setLayoutParams(layoutParams);
@@ -134,18 +134,18 @@ public class MainScanView extends FrameLayout {
         boolean invertedScan = intent.getBooleanExtra("INVERTED_SCAN", false);
         String characterSet = intent.getStringExtra("CHARACTER_SET");
         new MultiFormatReader().setHints(decodeHintTypeMap);
-        this.f3816a.m363a(cameraSettings);
-        this.f3816a.m373a(new DefaultDecoderFactory(decoderFactory, decodeHintTypeMap, characterSet, invertedScan ? 1 : 0));
+        this.handShakerBarcodeView.m363a(cameraSettings);
+        this.handShakerBarcodeView.m373a(new DefaultDecoderFactory(decoderFactory, decodeHintTypeMap, characterSet, invertedScan ? 1 : 0));
     }
 
     /* renamed from: b */
-    public final void m335b() {
-        this.f3816a.m348f();
+    public final void pause() {
+        this.handShakerBarcodeView.m348f();
     }
 
     /* renamed from: c */
-    public final void m334c() {
-        this.f3816a.m350e();
+    public final void resume() {
+        this.handShakerBarcodeView.resume();
         if (this.f3818c == null) {
             this.f3818c = new TranslateAnimation(this.f3819d.getX(), this.f3819d.getX(), this.f3819d.getTranslationY() - this.f3820e, this.f3819d.getTranslationY() + this.f3820e);
             this.f3818c.setRepeatCount(-1);
@@ -158,26 +158,26 @@ public class MainScanView extends FrameLayout {
 
     /* renamed from: d */
     public final HandShakerBarcodeView m333d() {
-        return this.f3816a;
+        return this.handShakerBarcodeView;
     }
 
     /* renamed from: a */
     public final void m337a(BarcodeCallback barcodeCallback) {
-        this.f3816a.m374a(new C0789b(barcodeCallback));
+        this.handShakerBarcodeView.m374a(new C0789b(barcodeCallback));
     }
 
     @Override // android.view.View, android.view.KeyEvent.Callback
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
         switch (i) {
             case 24:
-                this.f3816a.setTorch(true);
+                this.handShakerBarcodeView.setTorch(true);
                 if (this.f3821f != null) {
                     this.f3821f.mo303a();
                     return true;
                 }
                 return true;
             case 25:
-                this.f3816a.setTorch(false);
+                this.handShakerBarcodeView.setTorch(false);
                 if (this.f3821f != null) {
                     this.f3821f.mo302b();
                     return true;
@@ -202,6 +202,6 @@ public class MainScanView extends FrameLayout {
             this.f3818c.cancel();
         }
         this.f3819d.setVisibility(View.GONE);
-        this.f3816a.mo354c();
+        this.handShakerBarcodeView.pause();
     }
 }

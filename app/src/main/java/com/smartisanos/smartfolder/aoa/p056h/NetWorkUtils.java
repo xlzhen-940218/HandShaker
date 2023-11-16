@@ -3,7 +3,10 @@ package com.smartisanos.smartfolder.aoa.p056h;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.SupplicantState;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -22,10 +25,15 @@ public final class NetWorkUtils {
     }
 
     /* renamed from: b */
-    public static String m378b(Context context) {
+    public static String getWifiName(Context context) {
         NetworkInfo activeNetworkInfo;
-        if (context != null && (activeNetworkInfo = ((ConnectivityManager) context.getSystemService("connectivity")).getActiveNetworkInfo()) != null && activeNetworkInfo.getType() == 1) {
-            StringBuilder sb = new StringBuilder(((WifiManager) context.getSystemService("wifi")).getConnectionInfo().getSSID());
+        if (context != null && (activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()) != null && activeNetworkInfo.getType() == 1) {
+            WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            if(wifiInfo.getSupplicantState() == SupplicantState.COMPLETED) {
+                String ssid = wifiInfo.getSSID();
+            }
+            StringBuilder sb = new StringBuilder();
             if (sb.toString().endsWith("\"") && sb.toString().startsWith("\"")) {
                 return sb.subSequence(1, sb.length() - 1).toString();
             }

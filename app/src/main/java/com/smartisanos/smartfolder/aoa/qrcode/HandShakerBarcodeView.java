@@ -151,8 +151,8 @@ public class HandShakerBarcodeView extends HandShakerCameraPreview {
 
     @Override // com.smartisanos.smartfolder.aoa.qrcode.HandShakerCameraPreview
     /* renamed from: c */
-    public final void mo354c() {
+    public final void pause() {
         m367o();
-        super.mo354c();
+        super.pause();
     }
 }

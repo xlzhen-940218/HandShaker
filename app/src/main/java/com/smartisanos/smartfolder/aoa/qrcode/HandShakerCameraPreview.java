@@ -56,16 +56,16 @@ public class HandShakerCameraPreview extends ViewGroup {
     private boolean useTextureView;
 
     /* renamed from: f */
-    private SurfaceView f3795f;
+    private SurfaceView surfaceView;
 
     /* renamed from: g */
-    private TextureView f3796g;
+    private TextureView textureView;
 
     /* renamed from: h */
     private boolean f3797h;
 
     /* renamed from: i */
-    private RotationListener f3798i;
+    private RotationListener rotationListener;
 
     /* renamed from: j */
     private int f3799j;
@@ -89,7 +89,7 @@ public class HandShakerCameraPreview extends ViewGroup {
     private Rect f3805p;
 
     /* renamed from: q */
-    public Size f3806q;
+    public Size surfaceSize;
 
     /* renamed from: r */
     private Rect f3807r;
@@ -211,24 +211,24 @@ public class HandShakerCameraPreview extends ViewGroup {
         m364a(attributeSet);
         this.windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         this.handler = new Handler(this.handlerCallback);
-        this.f3798i = new RotationListener();
+        this.rotationListener = new RotationListener();
     }
 
     @Override // android.view.ViewGroup, android.view.View
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (this.useTextureView && Build.VERSION.SDK_INT >= 14) {
-            this.f3796g = new TextureView(getContext());
-            this.f3796g.setSurfaceTextureListener(m366a());
-            addView(this.f3796g);
+            this.textureView = new TextureView(getContext());
+            this.textureView.setSurfaceTextureListener(m366a());
+            addView(this.textureView);
             return;
         }
-        this.f3795f = new SurfaceView(getContext());
+        this.surfaceView = new SurfaceView(getContext());
         if (Build.VERSION.SDK_INT < 11) {
-            this.f3795f.getHolder().setType(3);
+            this.surfaceView.getHolder().setType(3);
         }
-        this.f3795f.getHolder().addCallback(this.surfaceCallback);
-        addView(this.f3795f);
+        this.surfaceView.getHolder().addCallback(this.surfaceCallback);
+        addView(this.surfaceView);
     }
 
     /* JADX INFO: Access modifiers changed from: protected */
@@ -270,12 +270,12 @@ public class HandShakerCameraPreview extends ViewGroup {
     public void m342l() {
         float f;
         float f2 = 1.0f;
-        if (this.f3806q != null && this.scaleSize != null && this.f3805p != null) {
-            if (this.f3795f != null && this.f3806q.equals(new Size(this.f3805p.width(), this.f3805p.height()))) {
-                m362a(new CameraSurface(this.f3795f.getHolder()));
-            } else if (this.f3796g != null && Build.VERSION.SDK_INT >= 14 && this.f3796g.getSurfaceTexture() != null) {
+        if (this.surfaceSize != null && this.scaleSize != null && this.f3805p != null) {
+            if (this.surfaceView != null && this.surfaceSize.equals(new Size(this.f3805p.width(), this.f3805p.height()))) {
+                m362a(new CameraSurface(this.surfaceView.getHolder()));
+            } else if (this.textureView != null && Build.VERSION.SDK_INT >= 14 && this.textureView.getSurfaceTexture() != null) {
                 if (this.scaleSize != null) {
-                    Size size = new Size(this.f3796g.getWidth(), this.f3796g.getHeight());
+                    Size size = new Size(this.textureView.getWidth(), this.textureView.getHeight());
                     Size size2 = this.scaleSize;
                     float f3 = size.width / size.height;
                     float f4 = size2.width / size2.height;
@@ -288,9 +288,9 @@ public class HandShakerCameraPreview extends ViewGroup {
                     Matrix matrix = new Matrix();
                     matrix.setScale(f, f2);
                     matrix.postTranslate((size.width - (f * size.width)) / 2.0f, (size.height - (f2 * size.height)) / 2.0f);
-                    this.f3796g.setTransform(matrix);
+                    this.textureView.setTransform(matrix);
                 }
-                m362a(new CameraSurface(this.f3796g.getSurfaceTexture()));
+                m362a(new CameraSurface(this.textureView.getSurfaceTexture()));
             }
         }
     }
@@ -306,7 +306,7 @@ public class HandShakerCameraPreview extends ViewGroup {
             DisplayConfiguration displayConfiguration = this.displayConfiguration;
             if (this.strategy != null) {
                 fitCenterStrategy = this.strategy;
-            } else if (this.f3796g != null) {
+            } else if (this.textureView != null) {
                 fitCenterStrategy = new CenterCropStrategy();
             } else {
                 fitCenterStrategy = new FitCenterStrategy();
@@ -318,14 +318,14 @@ public class HandShakerCameraPreview extends ViewGroup {
                 this.cameraInstance.setTorch(this.torch);
             }
         }
-        if (this.f3795f != null) {
+        if (this.surfaceView != null) {
             if (this.f3805p == null) {
-                this.f3795f.layout(0, 0, getWidth(), getHeight());
+                this.surfaceView.layout(0, 0, getWidth(), getHeight());
             } else {
-                this.f3795f.layout(this.f3805p.left, this.f3805p.top, this.f3805p.right, this.f3805p.bottom);
+                this.surfaceView.layout(this.f3805p.left, this.f3805p.top, this.f3805p.right, this.f3805p.bottom);
             }
-        } else if (this.f3796g != null && Build.VERSION.SDK_INT >= 14) {
-            this.f3796g.layout(0, 0, getWidth(), getHeight());
+        } else if (this.textureView != null && Build.VERSION.SDK_INT >= 14) {
+            this.textureView.layout(0, 0, getWidth(), getHeight());
         }
     }
 
@@ -340,7 +340,7 @@ public class HandShakerCameraPreview extends ViewGroup {
     }
 
     /* renamed from: e */
-    public final void m350e() {
+    public final void resume() {
         Util.validateMainThread();
         Log.d(TAG, "resume()");
         if (this.cameraInstance != null) {
@@ -350,26 +350,26 @@ public class HandShakerCameraPreview extends ViewGroup {
             cameraInstance.setCameraSettings(this.cameraSettings);
             this.cameraInstance = cameraInstance;
             this.cameraInstance.setReadyHandler(this.handler);
-            this.cameraInstance.startPreview();
+            this.cameraInstance.open();
             this.f3799j = m341m();
         }
-        if (this.f3806q != null) {
+        if (this.surfaceSize != null) {
             m342l();
-        } else if (this.f3795f != null) {
-            this.f3795f.getHolder().addCallback(this.surfaceCallback);
-        } else if (this.f3796g != null && Build.VERSION.SDK_INT >= 14) {
-            if (this.f3796g.isAvailable()) {
-                m366a().onSurfaceTextureAvailable(this.f3796g.getSurfaceTexture(), this.f3796g.getWidth(), this.f3796g.getHeight());
+        } else if (this.surfaceView != null) {
+            this.surfaceView.getHolder().addCallback(this.surfaceCallback);
+        } else if (this.textureView != null && Build.VERSION.SDK_INT >= 14) {
+            if (this.textureView.isAvailable()) {
+                m366a().onSurfaceTextureAvailable(this.textureView.getSurfaceTexture(), this.textureView.getWidth(), this.textureView.getHeight());
             } else {
-                this.f3796g.setSurfaceTextureListener(m366a());
+                this.textureView.setSurfaceTextureListener(m366a());
             }
         }
         requestLayout();
-        this.f3798i.listen(getContext(), this.rotationCallback);
+        this.rotationListener.listen(getContext(), this.rotationCallback);
     }
 
     /* renamed from: c */
-    public void mo354c() {
+    public void pause() {
         Util.validateMainThread();
         Log.d(TAG, "pause()");
         this.f3799j = -1;
@@ -380,16 +380,16 @@ public class HandShakerCameraPreview extends ViewGroup {
         } else {
             this.handler.sendEmptyMessage(R.id.zxing_camera_closed);
         }
-        if (this.f3806q == null && this.f3795f != null) {
-            this.f3795f.getHolder().removeCallback(this.surfaceCallback);
+        if (this.surfaceSize == null && this.surfaceView != null) {
+            this.surfaceView.getHolder().removeCallback(this.surfaceCallback);
         }
-        if (this.f3806q == null && this.f3796g != null && Build.VERSION.SDK_INT >= 14) {
-            this.f3796g.setSurfaceTextureListener(null);
+        if (this.surfaceSize == null && this.textureView != null && Build.VERSION.SDK_INT >= 14) {
+            this.textureView.setSurfaceTextureListener(null);
         }
         this.f3803n = null;
         this.scaleSize = null;
         this.cropRect = null;
-        this.f3798i.stop();
+        this.rotationListener.stop();
         this.f3790A.stop();
     }
 
@@ -459,7 +459,7 @@ public class HandShakerCameraPreview extends ViewGroup {
     /* renamed from: f */
     public final void m348f() {
         CameraInstance cameraInstance = this.cameraInstance;
-        mo354c();
+        pause();
         long nanoTime = System.nanoTime();
         while (cameraInstance != null && !cameraInstance.isCameraClosed() && System.nanoTime() - nanoTime <= 2000000000) {
             try {
@@ -523,7 +523,7 @@ public class HandShakerCameraPreview extends ViewGroup {
         if (!handShakerCameraPreview.m347g() || handShakerCameraPreview.m341m() == handShakerCameraPreview.f3799j) {
             return;
         }
-        handShakerCameraPreview.mo354c();
-        handShakerCameraPreview.m350e();
+        handShakerCameraPreview.pause();
+        handShakerCameraPreview.resume();
     }
 }

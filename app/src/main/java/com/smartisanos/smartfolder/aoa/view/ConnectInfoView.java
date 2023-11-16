@@ -2,6 +2,12 @@ package com.smartisanos.smartfolder.aoa.view;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
+import android.net.wifi.WifiInfo;
+import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -14,6 +20,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
 import com.smartisanos.smartfolder.aoa.FolderApp;
 import com.smartisanos.smartfolder.aoa.MainActivity;
 import com.smartisanos.smartfolder.aoa.R;
@@ -26,10 +36,10 @@ import com.smartisanos.smartfolder.aoa.p056h.Tracker;
 public class ConnectInfoView extends RelativeLayout {
 
     /* renamed from: a */
-    private TextView f3932a;
+    private TextView wifiPhoneNameTextView;
 
     /* renamed from: b */
-    private TextView f3933b;
+    private TextView wifiSSIDTextView;
 
     /* renamed from: c */
     private TextView f3934c;
@@ -67,8 +77,8 @@ public class ConnectInfoView extends RelativeLayout {
     /* renamed from: a */
     private void m223a(Context context) {
         LayoutInflater.from(context).inflate(R.layout.layout_connect_info, (ViewGroup) this, true);
-        this.f3932a = (TextView) findViewById(R.id.wifi_phone_name);
-        this.f3933b = (TextView) findViewById(R.id.wifi_ssid);
+        this.wifiPhoneNameTextView = (TextView) findViewById(R.id.wifi_phone_name);
+        this.wifiSSIDTextView = (TextView) findViewById(R.id.wifi_ssid);
         this.connectInfoTipTextView = (TextView) findViewById(R.id.connect_info_tip);
         this.f3934c = (TextView) findViewById(R.id.connect_info_tip_for_image);
         this.f3936e = findViewById(R.id.connect_info_image_phone);
@@ -127,12 +137,40 @@ public class ConnectInfoView extends RelativeLayout {
     }
 
     /* renamed from: c */
+    ConnectivityManager connectivityManager;
+
     private void m219c() {
         String m447c = DeviceInfoHelper.getDeviceInfoHelper().getDeviceInfo().getDeviceName();
-        String m378b = NetWorkUtils.m378b(FolderApp.getInstance());
+        String m378b = NetWorkUtils.getWifiName(FolderApp.getInstance());
         HandShaker.info("ConnectInfoView", "refreshWifiInfo phoneName: " + m447c + ",  ssid: " + m378b);
-        this.f3932a.setText(m447c);
-        this.f3933b.setText(m378b);
+        this.wifiPhoneNameTextView.setText(m447c);
+        this.wifiSSIDTextView.setText(m378b);
+
+        final NetworkRequest request =
+                new NetworkRequest.Builder()
+                        .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                        .build();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            connectivityManager = getContext().getSystemService(ConnectivityManager.class);
+
+            final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback(ConnectivityManager.NetworkCallback.FLAG_INCLUDE_LOCATION_INFO) {
+                @Override
+                public void onAvailable(@NonNull Network network) {
+                    super.onAvailable(network);
+                }
+
+                @Override
+                public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
+                    super.onCapabilitiesChanged(network, networkCapabilities);
+                    WifiInfo wifiInfo = (WifiInfo) networkCapabilities.getTransportInfo();
+                    wifiSSIDTextView.setText(wifiInfo.getSSID());
+                }
+                // etc.
+            };
+            connectivityManager.requestNetwork(request, networkCallback); // For request
+            connectivityManager.registerNetworkCallback(request, networkCallback);
+        }
     }
 
     /* renamed from: a */

@@ -11,11 +11,11 @@ import com.journeyapps.barcodescanner.Size;
 public final class TextureView$SurfaceTextureListenerC0791b implements TextureView.SurfaceTextureListener {
 
     /* renamed from: a */
-    final /* synthetic */ HandShakerCameraPreview f3828a;
+    final /* synthetic */ HandShakerCameraPreview handShakerCameraPreview;
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public TextureView$SurfaceTextureListenerC0791b(HandShakerCameraPreview handShakerCameraPreview) {
-        this.f3828a = handShakerCameraPreview;
+        this.handShakerCameraPreview = handShakerCameraPreview;
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
@@ -24,9 +24,9 @@ public final class TextureView$SurfaceTextureListenerC0791b implements TextureVi
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
-    public final void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i2) {
-        this.f3828a.f3806q = new Size(i, i2);
-        this.f3828a.m342l();
+    public final void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int width, int height) {
+        this.handShakerCameraPreview.surfaceSize = new Size(width, height);
+        this.handShakerCameraPreview.m342l();
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener

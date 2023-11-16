@@ -1,10 +1,15 @@
 package com.smartisanos.smartfolder.aoa.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.os.Build;
 import android.view.View;
 
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.journeyapps.barcodescanner.CaptureActivity;
+import com.journeyapps.barcodescanner.ScanOptions;
 import com.smartisanos.smartfolder.aoa.FolderApp;
+import com.smartisanos.smartfolder.aoa.MainActivity;
 import com.smartisanos.smartfolder.aoa.R;
 import com.smartisanos.smartfolder.aoa.p056h.CommonUtils;
 import com.smartisanos.smartfolder.aoa.p056h.NetWorkUtils;
@@ -66,8 +71,21 @@ public final class StartScanQRCodeClickListener implements View.OnClickListener 
             alertDialog2.show();
             return;
         }
-        new IntentIntegrator(this.connecttingFragment.getActivity()).setCaptureActivity(ScanActivity.class)
+        ScanOptions options = new ScanOptions();
+        options.setPrompt("Volume up to flash on");
+        options.setBeepEnabled(true);
+        options.setBarcodeImageEnabled(true);
+        options.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        options.setCaptureActivity(ScanActivity.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ((MainActivity)connecttingFragment.getContext()).barLauncher.launch(options);
+        }else{
+            new IntentIntegrator(this.connecttingFragment.getActivity()).setCaptureActivity(ScanActivity.class)
                 .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
                 .setCameraId(0).setBeepEnabled(true).setBarcodeImageEnabled(true).createScanIntent();
+        }
+
     }
+
+
 }
