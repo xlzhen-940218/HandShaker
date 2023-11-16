@@ -18,6 +18,7 @@ import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -188,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements ConnecttedFragmen
 
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         HandShaker.info("MainActivity", "onCreate");
         super.onCreate(bundle);
         if (!(Settings.Global.getInt(getContentResolver(), "device_provisioned", 0) != 0)) {

@@ -1,5 +1,6 @@
 package com.smartisan.moreapps.download;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -52,14 +53,14 @@ public class DownloadApkReceiver extends BroadcastReceiver {
             }
             DownloadManager.Query query = new DownloadManager.Query();
             query.setFilterByStatus(8);
-            Cursor query2 = ((DownloadManager) context.getSystemService("download")).query(query);
+            Cursor query2 = ((DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE)).query(query);
             if (query2 != null) {
                 try {
                     if (query2.moveToFirst()) {
-                        String string = query2.getString(query2.getColumnIndex("local_filename"));
+                        @SuppressLint("Range") String downloadFileLocalUri = query2.getString(query2.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
                         Intent intent2 = new Intent("android.intent.action.VIEW");
                         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent2.setDataAndType(Uri.fromFile(new File(string)), "application/vnd.android.package-archive");
+                        intent2.setDataAndType(Uri.fromFile(new File(downloadFileLocalUri)), "application/vnd.android.package-archive");
                         context.startActivity(intent2);
                     }
                 } finally {
