@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/custom_dialog_title"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_top_panel"
+        android:gravity="center"
+        android:textColor="@color/dialog_message"
+        android:textSize="@dimen/custom_dialog_title_text_size"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/custom_dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="72dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/custom_dialog_content_left"
+        android:paddingRight="@dimen/custom_dialog_content_left">
+
+        <TextView
+            android:id="@+id/custom_dialog_message"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/custom_dialog_content_margin"
+            android:layout_marginBottom="@dimen/custom_dialog_content_margin"
+            android:gravity="center"
+            android:textColor="@color/dialog_message"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/custom_dialog_content_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/custom_dialog_content_margin"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/custom_dialog_buttons"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bottom_panel"
+        android:dividerPadding="0dp"
+        android:orientation="horizontal"
+        android:showDividers="middle" />
+</LinearLayout>

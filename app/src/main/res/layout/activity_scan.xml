@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.smartisanos.smartfolder.aoa.qrcode.MainScanView android:id="@+id/dbv_custom" android:layout_width="match_parent" android:layout_height="match_parent" app:zxing_preview_scaling_strategy="fitXY"/>
+</LinearLayout>

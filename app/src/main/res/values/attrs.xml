@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Title">
+        <attr name="feedback_itemtitle" format="string" />
+        <attr name="feedback_titleColor" format="color" />
+        <attr name="feedback_titleSize" format="dimension" />
+        <attr name="feedback_backText" format="string" />
+        <attr name="feedback_backTextColor" format="color" />
+        <attr name="feedback_backTextSize" format="dimension" />
+        <attr name="feedback_okText" format="string" />
+        <attr name="feedback_okTextColor" format="color" />
+        <attr name="feedback_okTextSize" format="dimension" />
+
+    </declare-styleable>
+    <declare-styleable name="ChipsView">
+        <attr name="android:enabled"/>
+        <attr name="android:gravity" />
+        <attr name="android:clickable"/>
+        <attr name="android:text"/>
+        <attr name="android:maxLines"/>
+        <attr name="android:type"/>
+    </declare-styleable>
+    <declare-styleable name="RoundedRectLinearLayout">
+        <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
+</resources>

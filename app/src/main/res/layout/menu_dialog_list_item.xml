@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<smartisanos.app.MenuDialogTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/menu_dialog_button_gray"
+    android:gravity="center"
+    android:shadowColor="#26000000"
+    android:shadowDx="0"
+    android:shadowDy="-2"
+    android:shadowRadius="0.1"
+    android:singleLine="true"
+    android:textColor="#ffffffff"
+    android:textSize="18sp" />

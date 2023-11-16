@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/surname_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="13dp"
+        android:paddingTop="1.5dp"
+        android:paddingRight="13dp"
+        android:paddingBottom="4dp">
+
+        <ScrollView
+            android:id="@+id/surname_content_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/surname_popup_background"
+            android:overScrollMode="always"
+            android:paddingLeft="6dp"
+            android:paddingTop="16dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="16dp"
+            android:scrollbars="none">
+
+            <smartisanos.widget.letters.SurnameFlowLayout
+                android:id="@+id/surname_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal" />
+        </ScrollView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/surname_top_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="17.5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/surname_mask_top" />
+
+    <ImageView
+        android:id="@+id/surname_bottom_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="19dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/surname_mask_bottom" />
+
+    <ImageView
+        android:id="@+id/surname_popup_bottom_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/surname_popup_arrow_bottom"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/surname_popup_top_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@drawable/surname_popup_arrow_up"
+        android:visibility="gone" />
+</FrameLayout>

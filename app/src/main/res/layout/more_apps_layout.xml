@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/setting_more_apps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/more_apps_title_top"
+        android:layout_marginBottom="@dimen/more_apps_title_bottom"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/more_apps_text_left"
+        android:text="@string/more_apps_title"
+        android:textColor="@color/more_apps_title_text_color"
+        android:textSize="@dimen/more_apps_title_text_size" />
+
+    <ListView
+        android:id="@+id/app_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/setting_more_apps"
+        android:divider="@android:color/transparent" />
+</RelativeLayout>

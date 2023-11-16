@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<smartisanos.widget.RoundedRectLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:smartisanos="http://schemas.android.com/apk/res-auto"
+    style="@style/PopupMenuStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    smartisanos:cornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/menu_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/menu_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popup_list_menu_title_height"
+            android:layout_marginLeft="@dimen/popup_list_title_left_margin"
+            android:gravity="center_vertical"
+            android:textColor="#4c000000"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_divider_height"
+            android:background="@drawable/list_divider_drawable" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:overScrollMode="always" />
+
+    <View
+        android:id="@+id/menu_list_bottom_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider_height"
+        android:background="@drawable/list_divider_drawable" />
+
+    <RelativeLayout
+        android:id="@+id/bottom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popup_list_menu_item_height"
+        android:layout_below="@+id/menu_title"
+        android:layout_gravity="center"
+        android:background="#f5f5f5">
+
+        <Button
+            android:id="@+id/left_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/pop_menu_btn_selector"
+            android:textColor="@color/title_or_btn_text_color"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/right_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/pop_menu_btn_selector"
+            android:textColor="@color/title_or_btn_text_color"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/action_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/right_btn"
+            android:layout_toRightOf="@+id/left_btn"
+            android:gravity="center"
+            android:textColor="#4c000000"
+            android:textSize="10sp" />
+    </RelativeLayout>
+</smartisanos.widget.RoundedRectLinearLayout>

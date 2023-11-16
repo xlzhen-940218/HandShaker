@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item
+        android:drawable="@drawable/eye_icon_0001"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0002"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0003"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0004"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0005"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0006"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0007"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0008"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0009"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0010"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0011"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0012"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0013"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0014"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0015"
+        android:duration="@integer/eyeAnimDuration" />
+    <item
+        android:drawable="@drawable/eye_icon_0016"
+        android:duration="@integer/eyeAnimDuration" />
+</animation-list>

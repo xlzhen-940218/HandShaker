@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.smartisanos.smartfolder.aoa.view.ConnectInfoView
+            android:id="@+id/connectting_wifi_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/connection_main_view_top"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/connectting_no_wifi_layout"
+            layout="@layout/layout_no_wifi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/connecting_main_view_no_wifi_top"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/connecting_usb_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/connectting_usb_tip_margin_bottom">
+
+            <ImageView
+                android:id="@+id/connectting_image_usb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_usb" />
+
+            <TextView
+                android:id="@+id/connectting_bottom_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/connectting_usb_tip_margin_left"
+                android:layout_toRightOf="@+id/connectting_image_usb"
+                android:text="@string/connectting_usb_tip"
+                android:textColor="@color/normal_text"
+                android:textSize="@dimen/connectting_usb_tip_text_size"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.smartisanos.smartfolder.aoa.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/setting_margin_top"
+        android:overScrollMode="always"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/setting_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_share_margin_top"
+                android:background="@drawable/selector_setting_sub_item_bg_top"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/setting_item_text_left"
+                android:text="@string/settings_share_app"
+                android:textColor="@color/settings_item_color_bg"
+                android:textSize="@dimen/setting_item_text_size" />
+
+            <RelativeLayout
+                android:id="@+id/setting_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_item_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:text="@string/settings_help"
+                    android:textColor="@color/settings_item_color_bg"
+                    android:textSize="@dimen/setting_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_next" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_check_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_item_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:text="@string/settings_check_update"
+                    android:textColor="@color/settings_item_color_bg"
+                    android:textSize="@dimen/setting_item_text_size" />
+
+                <TextView
+                    android:id="@+id/setting_version_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/settings_item_text_right"
+                    android:textColor="@drawable/settings_item_right_color_bg"
+                    android:textSize="@dimen/more_text_size_15" />
+
+                <ProgressBar
+                    android:id="@+id/update_progress_bar"
+                    android:layout_width="@dimen/settings_progress_bar_width"
+                    android:layout_height="@dimen/settings_progress_bar_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/settings_item_text_right"
+                    android:duplicateParentState="true"
+                    android:indeterminateDrawable="@drawable/common_progress_item"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_switch_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_item_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/language_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:text="@string/setting_switch_language_txt"
+                    android:textColor="@color/settings_item_color_bg"
+                    android:textSize="@dimen/setting_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_next" />
+
+                <TextView
+                    android:id="@+id/current_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/setting_item_text_account_right"
+                    android:singleLine="true"
+                    android:textColor="@color/current_language_text_color"
+                    android:textSize="@dimen/setting_item_current_language_size" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_item_middle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:text="@string/setting_feedback_txt"
+                    android:textColor="@color/settings_item_color_bg"
+                    android:textSize="@dimen/setting_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_next" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting_user_experience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_setting_sub_item_bg_bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:text="@string/setting_user_experience_txt"
+                    android:textColor="@color/settings_item_color_bg"
+                    android:textSize="@dimen/setting_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_next" />
+            </RelativeLayout>
+
+            <com.smartisan.moreapps.AppsView
+                android:id="@+id/setting_more_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/layout_follow_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/setting_language_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/setting_item_top"
+                android:layout_marginBottom="@dimen/setting_item_top"
+                android:background="@drawable/setting_item_single_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/setting_item_text_left"
+                    android:src="@drawable/language_switch_icon" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/setting_next" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.smartisanos.smartfolder.aoa.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

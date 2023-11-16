@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:setting="http://schemas.android.com/apk/res/com.smartisan.feedbackhelper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.smartisan.feedbackhelper.utils.CustomEditText
+        android:id="@+id/et_problem_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/feedback_edit_item_top_bottom_margin"
+        android:background="@drawable/feedback_edit_text"
+        android:gravity="top"
+        android:hint="@string/problem_description_hint"
+        android:lineSpacingExtra="10dp"
+        android:maxLength="1000"
+        android:minHeight="180dp"
+        android:paddingLeft="@dimen/feedback_edit_item_title_left_margin"
+        android:paddingTop="17dp"
+        android:paddingRight="@dimen/feedback_edit_item_title_right_margin"
+        android:paddingBottom="17dp"
+        android:textColor="#454a5c"
+        android:textColorHint="@color/setting_gray"
+        android:textCursorDrawable="@drawable/feedback_email_text_cursor"
+        android:textSize="15dp" />
+
+    <include layout="@layout/feedback_item_bottom_shadow_layout" />
+
+    <RelativeLayout
+        android:id="@+id/account_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/feedback_edit_text"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/feedback_register_edit_text_padding_left"
+        android:paddingRight="@dimen/feedback_register_edit_text_padding_left">
+
+        <EditText
+            android:id="@+id/feedback_user_info_email"
+            style="@style/feedback_editAccountInfoTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:hint="@string/problem_user_info_email"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:maxLength="40"
+            android:textCursorDrawable="@drawable/feedback_email_text_cursor" />
+    </RelativeLayout>
+
+    <include layout="@layout/feedback_item_bottom_shadow_layout" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/b2g_item_solo"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <GridView
+            android:id="@+id/gd_problem_screen_shots"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="17dp"
+            android:columnWidth="61dp"
+            android:gravity="center_vertical"
+            android:numColumns="auto_fit"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth" />
+
+        <TextView
+            android:id="@+id/bug2go_addpic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="87dp"
+            android:text="@string/problem_description_image_introduction"
+            android:textColor="#bfc0c5"
+            android:textSize="15dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/feedback_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/feedback_start_button_margintop"
+        android:background="@drawable/feedback_selector_button"
+        android:gravity="center"
+        android:text="@string/problem_description_button_next"
+        android:textColor="@color/setting_item_text_colorlist"
+        android:textSize="@dimen/feedback_start_text_size3" />
+</LinearLayout>

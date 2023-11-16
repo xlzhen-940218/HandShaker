@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <usb-accessory
+        orderInCategory="Smartisan"
+        showAsAction="withText|always"
+        title="1" />
+</resources>

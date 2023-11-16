@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:shareInterpolator="false" android:zAdjustment="top">
+    <translate android:interpolator="@anim/feedback_decelerate_quad" android:duration="300" android:fillBefore="false" android:fillAfter="true" android:fromXDelta="0%p" android:toXDelta="-100%p" android:fillEnabled="true"/>
+</set>
