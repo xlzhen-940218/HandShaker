@@ -14,9 +14,10 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import com.smartisan.moreapps.AppInfoList;
+
 import com.smartisan.moreapps.download.DownloadApkReceiver;
-import com.smartisan.p043a.C0411a;
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,7 +73,7 @@ public class AppsView extends RelativeLayout {
     private void m2011a() {
         boolean z;
         ArrayList<AppInfoList.C0464a> m1997a;
-        View inflate = LayoutInflater.from(this.f2620c).inflate(C0411a.C0415d.more_apps_layout, this);
+        View inflate = LayoutInflater.from(this.f2620c).inflate(R.layout.more_apps_layout, this);
         this.f2621d = new ProductsAdapter(this.f2620c);
         if (new File(this.f2620c.getApplicationContext().getFilesDir().toString(), "string.xml").exists()) {
             String m2008a = m2008a(this.f2620c.getApplicationContext().getFilesDir().toString() + "/string.xml");
@@ -83,7 +85,7 @@ public class AppsView extends RelativeLayout {
             }
         }
         this.f2621d.m1982a();
-        this.f2622e = (ListView) inflate.findViewById(C0411a.C0413b.app_list);
+        this.f2622e = (ListView) inflate.findViewById(R.id.app_list);
         this.f2622e.setAdapter((ListAdapter) this.f2621d);
         m2010a(this.f2622e);
         Calendar calendar = Calendar.getInstance();
@@ -163,7 +165,7 @@ public class AppsView extends RelativeLayout {
         BufferedReader bufferedReader;
         FileNotFoundException e2;
         Object isEmpty = TextUtils.isEmpty(str);
-        if ((boolean)isEmpty) {
+        if ((boolean) isEmpty) {
             return null;
         }
         StringBuffer stringBuffer = new StringBuffer();

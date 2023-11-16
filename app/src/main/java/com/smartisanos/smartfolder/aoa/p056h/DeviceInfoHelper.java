@@ -422,7 +422,7 @@ public final class DeviceInfoHelper {
     /* renamed from: g */
     static /* synthetic */ void m459g(DeviceInfoHelper deviceInfoHelper) {
         HandShaker.debug("DeviceInfoHelper", "refreshStorageState start");
-        deviceInfoHelper.deviceInfo.audioSize = StorageUtils.m537a(deviceInfoHelper.context);
+        deviceInfoHelper.deviceInfo.audioSize = StorageUtils.getAudioSize(deviceInfoHelper.context);
         deviceInfoHelper.deviceInfo.pictureVideoSize = StorageUtils.m533a(Environment.DIRECTORY_DCIM, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_PICTURES);
         deviceInfoHelper.deviceInfo.downloadSize = StorageUtils.m533a(Environment.DIRECTORY_DOWNLOADS);
         StorageUtils.m536a(deviceInfoHelper.context, deviceInfoHelper.f3699p);

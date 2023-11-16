@@ -1,7 +1,5 @@
 package com.smartisan.moreapps;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,9 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.smartisan.moreapps.AppInfoList;
+
 import com.smartisan.moreapps.download.AppDownloader;
-import com.smartisan.p043a.C0411a;
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -134,30 +133,30 @@ public final class ProductsAdapter extends BaseAdapter {
     @Override // android.widget.Adapter
     public final View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = ((LayoutInflater) this.f2647b.getSystemService("layout_inflater")).inflate(C0411a.C0415d.product_list_item, (ViewGroup) null);
+            view = ((LayoutInflater) this.f2647b.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.product_list_item, (ViewGroup) null);
         }
         if (i == 0) {
-            view.setBackgroundResource(C0411a.C0412a.list_item_top);
+            view.setBackgroundResource(R.drawable.list_item_top);
         } else if (i == this.f2646a.m2000b() - 1) {
-            view.setBackgroundResource(C0411a.C0412a.list_item_bottom);
+            view.setBackgroundResource(R.drawable.list_item_bottom);
         } else {
-            view.setBackgroundResource(C0411a.C0412a.list_item_middle);
+            view.setBackgroundResource(R.drawable.list_item_middle);
         }
         AppInfoList.C0464a m2004a = this.f2646a.m2004a(i);
         if (m2004a != null) {
-            ImageView imageView = (ImageView) view.findViewById(C0411a.C0413b.product_app_icon);
+            ImageView imageView = (ImageView) view.findViewById(R.id.product_app_icon);
             if (imageView != null) {
                 imageView.setImageBitmap(m2004a.f2636f);
             }
-            ((TextView) view.findViewById(C0411a.C0413b.product_app_name)).setText(m2004a.f2632b);
-            ((TextView) view.findViewById(C0411a.C0413b.product_app_describe)).setText(m2004a.f2633c);
-            Button button = (Button) view.findViewById(C0411a.C0413b.product_app_operation);
+            ((TextView) view.findViewById(R.id.product_app_name)).setText(m2004a.f2632b);
+            ((TextView) view.findViewById(R.id.product_app_describe)).setText(m2004a.f2633c);
+            Button button = (Button) view.findViewById(R.id.product_app_operation);
             String str = m2004a.f2634d;
             if (m2004a.f2631a) {
-                button.setText(C0411a.C0416e.app_open_txt);
+                button.setText(R.string.app_open_txt);
                 button.setOnClickListener(new View$OnClickListenerC0468h(this, str));
             } else {
-                button.setText(C0411a.C0416e.app_install_txt);
+                button.setText(R.string.app_install_txt);
                 button.setOnClickListener(new View$OnClickListenerC0469i(this, str));
             }
         }
@@ -195,9 +194,9 @@ public final class ProductsAdapter extends BaseAdapter {
                         edit.putString("location_names", string2 + m1998c + "##");
                         edit.commit();
                     }
-                    Toast.makeText(productsAdapter.f2647b, productsAdapter.f2647b.getString(C0411a.C0416e.download_no_net), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(productsAdapter.f2647b, productsAdapter.f2647b.getString(R.string.download_no_net), Toast.LENGTH_SHORT).show();
                 } else {
-                    new AlertDialog.Builder(new ContextThemeWrapper(productsAdapter.f2647b, android.R.style.Theme_DeviceDefault_Light)).setTitle(productsAdapter.f2647b.getString(C0411a.C0416e.download_dialog_title)).setMessage(productsAdapter.f2647b.getString(C0411a.C0416e.download_dialog_message)).setNegativeButton(productsAdapter.f2647b.getString(C0411a.C0416e.download_dialog_cancel), new DialogInterface$OnClickListenerC0467g(productsAdapter)).setPositiveButton(productsAdapter.f2647b.getString(C0411a.C0416e.download_dialog_download), new DialogInterface$OnClickListenerC0466f(productsAdapter, str, m1998c)).create().show();
+                    new AlertDialog.Builder(new ContextThemeWrapper(productsAdapter.f2647b, android.R.style.Theme_DeviceDefault_Light)).setTitle(productsAdapter.f2647b.getString(R.string.download_dialog_title)).setMessage(productsAdapter.f2647b.getString(R.string.download_dialog_message)).setNegativeButton(productsAdapter.f2647b.getString(R.string.download_dialog_cancel), new DialogInterface$OnClickListenerC0467g(productsAdapter)).setPositiveButton(productsAdapter.f2647b.getString(R.string.download_dialog_download), new DialogInterface$OnClickListenerC0466f(productsAdapter, str, m1998c)).create().show();
                 }
             }
         }

@@ -8,7 +8,8 @@ import android.widget.Toast;
 import com.smartisan.moreapps.HttpData;
 import com.smartisan.moreapps.SmartisanAppPref;
 import com.smartisan.moreapps.VersionInfo;
-import com.smartisan.p043a.C0411a;
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.json.JSONObject;
@@ -59,7 +60,7 @@ public final class AppDownloader extends AsyncTask<Void, Void, VersionInfo> {
             return false;
         }
         execute(new Void[0]);
-        Toast.makeText(this.f2641a, this.f2641a.getString(C0411a.C0416e.downloading_message), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.f2641a, this.f2641a.getString(R.string.downloading_message), Toast.LENGTH_SHORT).show();
         return true;
     }
 

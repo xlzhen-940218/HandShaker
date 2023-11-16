@@ -35,7 +35,7 @@ public class ConnectInfoView extends RelativeLayout {
     private TextView f3934c;
 
     /* renamed from: d */
-    private TextView f3935d;
+    private TextView connectInfoTipTextView;
 
     /* renamed from: e */
     private View f3936e;
@@ -69,7 +69,7 @@ public class ConnectInfoView extends RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.layout_connect_info, (ViewGroup) this, true);
         this.f3932a = (TextView) findViewById(R.id.wifi_phone_name);
         this.f3933b = (TextView) findViewById(R.id.wifi_ssid);
-        this.f3935d = (TextView) findViewById(R.id.connect_info_tip);
+        this.connectInfoTipTextView = (TextView) findViewById(R.id.connect_info_tip);
         this.f3934c = (TextView) findViewById(R.id.connect_info_tip_for_image);
         this.f3936e = findViewById(R.id.connect_info_image_phone);
         this.f3937f = findViewById(R.id.connect_info_image_mac);
@@ -87,16 +87,16 @@ public class ConnectInfoView extends RelativeLayout {
         spannableStringBuilder.setSpan(new ForegroundColorSpan(color), 0, length, 18);
         spannableStringBuilder.setSpan(new C0832a(), length + integer, (length + length2) - 1, 18);
         spannableStringBuilder.setSpan(new ForegroundColorSpan(color), length + integer, (length + length2) - 1, 18);
-        this.f3935d.setText(R.string.wifi_middle_tip);
-        this.f3935d.append(spannableStringBuilder);
-        this.f3935d.setHighlightColor(0);
-        this.f3935d.setMovementMethod(LinkMovementMethod.getInstance());
+        this.connectInfoTipTextView.setText(R.string.wifi_middle_tip);
+        this.connectInfoTipTextView.append(spannableStringBuilder);
+        this.connectInfoTipTextView.setHighlightColor(0);
+        this.connectInfoTipTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     /* renamed from: a */
     public final void m224a() {
         HandShaker.info("ConnectInfoView", "showForConnectting");
-        this.f3935d.setVisibility(View.VISIBLE);
+        this.connectInfoTipTextView.setVisibility(View.VISIBLE);
         this.f3934c.setText(R.string.wifi_top_tip);
         this.f3936e.setBackgroundResource(R.drawable.phone_disconnected);
         this.f3937f.setBackgroundResource(R.drawable.mac_disconnected);
@@ -109,7 +109,7 @@ public class ConnectInfoView extends RelativeLayout {
     public final void m220b() {
         String string;
         HandShaker.info("ConnectInfoView", "showForConnectted");
-        this.f3935d.setVisibility(View.GONE);
+        this.connectInfoTipTextView.setVisibility(View.GONE);
         String str = FolderApp.f3381e;
         if (((MainActivity) getContext()).mo782f()) {
             getResources().getString(R.string.connect_info_usb_show_name);

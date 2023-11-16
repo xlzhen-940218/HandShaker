@@ -5,8 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
-import com.smartisan.moreapps.AppInfoList;
-import com.smartisan.p043a.C0411a;
+
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -158,7 +159,7 @@ public final class AppListParser {
             if (inputStream != null) {
                 try {
                     try {
-                        int integer = this.f2637a.getResources().getInteger(C0411a.C0414c.item_icon_size);
+                        int integer = this.f2637a.getResources().getInteger(R.integer.item_icon_size);
                         Bitmap decodeStream = BitmapFactory.decodeStream(inputStream);
                         if (decodeStream != null) {
                             createScaledBitmap = Bitmap.createScaledBitmap(decodeStream, integer, integer, true);

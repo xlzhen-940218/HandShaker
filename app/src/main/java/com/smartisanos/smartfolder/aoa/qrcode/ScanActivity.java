@@ -1,5 +1,6 @@
 package com.smartisanos.smartfolder.aoa.qrcode;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -26,6 +27,7 @@ public class ScanActivity extends Activity {
     /* renamed from: c */
     private TextView f3826c;
 
+    @SuppressLint("MissingInflatedId")
     @Override // android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

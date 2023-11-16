@@ -5,7 +5,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import com.smartisan.p043a.C0411a;
+
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.util.ArrayList;
 
 /* renamed from: com.smartisan.moreapps.a */
@@ -47,13 +49,16 @@ public final class AppInfoList {
 
     /* renamed from: a */
     public final void m2005a() {
-        int[] iArr = {C0411a.C0412a.launcher, C0411a.C0412a.notes, C0411a.C0412a.calendar, C0411a.C0412a.clock, C0411a.C0412a.email, C0411a.C0412a.mover, C0411a.C0412a.reader};
-        int[] iArr2 = {C0411a.C0416e.launcher_app_txt, C0411a.C0416e.notes_app_txt, C0411a.C0416e.calendar_app_txt, C0411a.C0416e.clock_app_txt, C0411a.C0416e.email_app_txt, C0411a.C0416e.mover_app_txt, C0411a.C0416e.reader_app_txt};
-        int[] iArr3 = {C0411a.C0416e.launcher_des_txt, C0411a.C0416e.notes_des_txt, C0411a.C0416e.calendar_des_txt, C0411a.C0416e.clock_des_txt, C0411a.C0416e.email_des_txt, C0411a.C0416e.mover_des_txt, C0411a.C0416e.reader_des_txt};
+        int[] iArr = {R.drawable.launcher, R.drawable.notes, R.drawable.calendar, R.drawable.clock
+                , R.drawable.email, R.drawable.mover, R.drawable.reader};
+        int[] iArr2 = {R.string.launcher_app_txt, R.string.notes_app_txt, R.string.calendar_app_txt,
+                R.string.clock_app_txt, R.string.email_app_txt, R.string.mover_app_txt, R.string.reader_app_txt};
+        int[] iArr3 = {R.string.launcher_des_txt, R.string.notes_des_txt, R.string.calendar_des_txt
+                , R.string.clock_des_txt, R.string.email_des_txt, R.string.mover_des_txt, R.string.reader_des_txt};
         this.f2628d = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             int i2 = iArr[i];
-            int integer = this.f2629e.getResources().getInteger(C0411a.C0414c.item_icon_size);
+            int integer = this.f2629e.getResources().getInteger(R.integer.item_icon_size);
             Bitmap decodeResource = BitmapFactory.decodeResource(this.f2629e.getResources(), i2);
             Bitmap createScaledBitmap = Bitmap.createScaledBitmap(decodeResource, integer, integer, true);
             if (createScaledBitmap != decodeResource) {

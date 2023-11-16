@@ -8,7 +8,7 @@ import android.os.Environment;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 import com.smartisan.moreapps.AppInfoList;
-import com.smartisan.p043a.C0411a;
+import com.smartisanos.smartfolder.aoa.R;
 
 /* renamed from: com.smartisan.moreapps.download.c */
 /* loaded from: classes.dex */
@@ -35,7 +35,7 @@ public final class DownloaderUtils {
         try {
             return ((DownloadManager) context.getSystemService("download")).enqueue(request);
         } catch (Exception e) {
-            Toast.makeText(context, C0411a.C0416e.system_downloader_error, 1).show();
+            Toast.makeText(context, R.string.system_downloader_error, 1).show();
             return 0L;
         }
     }

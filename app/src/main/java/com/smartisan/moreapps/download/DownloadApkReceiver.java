@@ -12,7 +12,8 @@ import android.widget.Toast;
 import com.smartisan.moreapps.AppsView;
 import com.smartisan.moreapps.SmartisanAppPref;
 import com.smartisan.moreapps.SmartisanAppUtils;
-import com.smartisan.p043a.C0411a;
+import com.smartisanos.smartfolder.aoa.R;
+
 import java.io.File;
 
 /* loaded from: classes.dex */
@@ -24,7 +25,7 @@ public class DownloadApkReceiver extends BroadcastReceiver {
         if (TextUtils.equals(action, "android.net.conn.CONNECTIVITY_CHANGE")) {
             if (m1966a != 1) {
                 if (m1966a == 0 && DownloaderUtils.m1985a(context)) {
-                    Toast.makeText(context, context.getString(C0411a.C0416e.network_error_message), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.network_error_message), Toast.LENGTH_SHORT).show();
                 }
             } else {
                 SharedPreferences sharedPreferences = context.getSharedPreferences("download_pending", 0);

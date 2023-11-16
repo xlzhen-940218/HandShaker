@@ -24,7 +24,7 @@ public final class RunnableC0773j implements Runnable {
     @Override // java.lang.Runnable
     public final void run() {
         DeviceInfo deviceInfo = this.deviceInfo;
-        deviceInfo.audioSize = StorageUtils.m537a(context);
+        deviceInfo.audioSize = StorageUtils.getAudioSize(context);
         deviceInfo.pictureVideoSize = StorageUtils.m533a(Environment.DIRECTORY_DCIM, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_PICTURES);
         deviceInfo.downloadSize = StorageUtils.m533a(Environment.DIRECTORY_DOWNLOADS);
         StorageUtils.m536a(context, new C0774k(deviceInfoHelper,deviceInfo));

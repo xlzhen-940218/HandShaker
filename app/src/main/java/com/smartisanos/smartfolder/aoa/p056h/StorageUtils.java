@@ -62,7 +62,7 @@ public final class StorageUtils {
     }
 
     /* renamed from: a */
-    public static long m537a(Context context) {
+    public static long getAudioSize(Context context) {
         Cursor cursor;
         Exception e;
         long j = 0;
