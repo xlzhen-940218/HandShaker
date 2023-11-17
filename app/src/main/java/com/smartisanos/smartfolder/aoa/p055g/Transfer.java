@@ -6,7 +6,6 @@ import android.util.Base64;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.smartisanos.smartfolder.aoa.FolderApp;
-import com.smartisanos.smartfolder.aoa.decoder.KeyUtils;
 import com.smartisanos.smartfolder.aoa.p049a.EventManager;
 import com.smartisanos.smartfolder.aoa.p050b.TrustCancelEvent;
 import com.smartisanos.smartfolder.aoa.p050b.TrustFinishEvent;
@@ -24,7 +23,6 @@ import com.smartisanos.smartfolder.aoa.p056h.CommonUtils;
 import com.smartisanos.smartfolder.aoa.p056h.DeviceInfoHelper;
 import com.smartisanos.smartfolder.aoa.p056h.Pbkdf2PasswordHashUtil;
 
-import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
@@ -50,12 +48,12 @@ public class Transfer {
     private Connection connection;
 
     /* renamed from: d */
-    private ConnectionManager f3644d;
+    private ConnectionManager connectionManager;
 
     public Transfer(Connection connection) {
         this.connection = connection;
         this.f3642b = connection.m616h();
-        this.f3644d = this.connection.m617g();
+        this.connectionManager = this.connection.getConnectionManager();
     }
 
     /* renamed from: a */
@@ -88,13 +86,13 @@ public class Transfer {
         HandShaker.info(f3641a, "writeKeyExchangeInfo, connection type: " + this.connection.m618f());
         if (this.connection.m618f() == Connection.EnumC0746a.USB) {
             HandShaker.info(f3641a, "writeKeyExchangeInfo===usb==serving===");
-            PublicKey m677a = KeyUtils.getInstance().getPublicKey(bArr);
-            this.connection.m626a(m677a);
+            //PublicKey m677a = KeyUtils.getInstance().getPublicKey(bArr);
+            /*this.connection.m626a(m677a);
             if (m563a(i, m677a != null)) {
                 HandShaker.info(f3641a, "writeKeyExchangeInfo=====send===success");
                 this.f3644d.mo244a(this.connection);
                 return;
-            }
+            }*/
             return;
         }
         SmartSyncProtocolProtos.SSPHeartBeatRequest m1072a = SmartSyncProtocolProtos.SSPHeartBeatRequest.parseFrom(bArr);
@@ -118,7 +116,7 @@ public class Transfer {
                     .setClientMinHostVersionCode(CommonUtils.getClientMinHostVersionCode(1))
                     .build()
                     .toByteArray());
-            this.connection.m626a(KeyUtils.getInstance().getPublicKey(sspHandShakeRequest01));
+            //this.connection.m626a(KeyUtils.getInstance().getPublicKey(sspHandShakeRequest01));
             HandShaker.debug(f3641a, "Reponse01 returned");
         } else if (m1072a.getType() == SmartSyncProtocolProtos.SSPRequestType.HANDSHAKE_REQUEST_02) {
             SmartSyncProtocolProtos.SSPHandShakeRequest02 sspHandShakeRequest02 = SmartSyncProtocolProtos.SSPHandShakeRequest02.parseFrom(bArr);
@@ -145,7 +143,7 @@ public class Transfer {
                                 .setDeviceName(m466d.getDeviceName())
                                 .setResult(getResult(true))
                                 .setDerivedKey(derivedKey).build().toByteArray());
-                        this.f3644d.mo244a(this.connection);
+                        this.connectionManager.mo244a(this.connection);
                         return;
                     }
                     this.f3642b.m609a(i, SmartSyncProtocolProtos.SSPHandShakeResponse02.newBuilder()
@@ -207,14 +205,14 @@ public class Transfer {
                         .setResult(getResult(true))
                         .build()
                         .toByteArray());
-                this.f3644d.mo244a(this.connection);
+                this.connectionManager.mo244a(this.connection);
             } else if (m761c == SmartSyncProtocolProtos.SSPHandShakeTrustType.TRUST_ONCE) {
                 this.f3642b.m609a(m763a, SmartSyncProtocolProtos.SSPHandShakeResponse02.newBuilder()
                         .setType(SmartSyncProtocolProtos.SSPRequestType.HANDSHAKE_RESPONSE_02)
                         .setTrustType(m761c).setDeviceUuid(FolderApp.serialNumber)
                         .setDeviceName(m466d.getDeviceName())
                         .setResult(getResult(true)).build().toByteArray());
-                this.f3644d.mo244a(this.connection);
+                this.connectionManager.mo244a(this.connection);
             } else {
                 this.f3642b.m609a(m763a, SmartSyncProtocolProtos.SSPHandShakeResponse02.newBuilder()
                         .setType(SmartSyncProtocolProtos.SSPRequestType.HANDSHAKE_RESPONSE_02)

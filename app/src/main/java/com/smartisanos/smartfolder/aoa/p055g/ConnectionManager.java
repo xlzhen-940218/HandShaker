@@ -17,7 +17,7 @@ import java.util.Set;
 public abstract class ConnectionManager implements HeartBeatChecker.InterfaceC0740b {
 
     /* renamed from: a */
-    protected final Context f3599a;
+    protected Context context;
 
     /* renamed from: b */
     protected InterfaceC0750a f3600b;
@@ -55,15 +55,15 @@ public abstract class ConnectionManager implements HeartBeatChecker.InterfaceC07
     }
 
     public ConnectionManager(Context context, InterfaceC0750a interfaceC0750a) {
-        this.f3599a = context;
+        this.context = context;
         this.f3600b = interfaceC0750a;
     }
 
     /* JADX INFO: Access modifiers changed from: protected */
     /* renamed from: a */
-    public final synchronized Connection m605a(Connection.SspReader abstractC0747b, Connection.C0748c c0748c, Connection.EnumC0746a enumC0746a) {
+    public final synchronized Connection m605a(Connection.SspReader sspReader, Connection.C0748c c0748c, Connection.EnumC0746a enumC0746a) {
         Connection connection;
-        connection = new Connection(abstractC0747b, c0748c, enumC0746a, this);
+        connection = new Connection(sspReader, c0748c, enumC0746a, this);
         this.f3602d.add(connection);
         HandShaker.debug("ConnectionManager", "startConnection count = " + this.f3602d.size() + ", Connection = " + connection);
         return connection;
@@ -94,7 +94,7 @@ public abstract class ConnectionManager implements HeartBeatChecker.InterfaceC07
         HeartBeatChecker.getInstance().m675a(this.connection.m615i() * 1000);
         HeartBeatChecker.getInstance().m674a(this);
         if (!this.f3604f) {
-            this.f3604f = this.f3599a.bindService(new Intent(this.f3599a, MediaScannerService.class), this.f3606h, 1);
+            this.f3604f = this.context.bindService(new Intent(this.context, MediaScannerService.class), this.f3606h, 1);
             HandShaker.debug("ConnectionManager", "onConnected, mIsMediaScannerBound = " + this.f3604f);
         }
     }
@@ -115,7 +115,7 @@ public abstract class ConnectionManager implements HeartBeatChecker.InterfaceC07
             }
             if (this.f3604f) {
                 try {
-                    this.f3599a.unbindService(this.f3606h);
+                    this.context.unbindService(this.f3606h);
                     this.f3604f = false;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -137,7 +137,10 @@ public abstract class ConnectionManager implements HeartBeatChecker.InterfaceC07
 
     /* renamed from: f */
     public final Context m598f() {
-        return this.f3599a;
+        if(this.context == null){
+            this.context = FolderApp.getInstance().getApplicationContext();
+        }
+        return this.context;
     }
 
     /* renamed from: a */

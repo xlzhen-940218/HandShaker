@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.SyncFailedException;
 import java.nio.ByteBuffer;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +41,7 @@ public class SspExecutorManager {
     private static String f3614a = SspExecutorManager.class.getSimpleName();
 
     /* renamed from: b */
-    private final Connection f3615b;
+    private final Connection connection;
 
     /* renamed from: d */
     private C0736a f3617d;
@@ -226,7 +224,7 @@ public class SspExecutorManager {
                 HandShaker.debug("session = " + m572a + ", GET_UPLOAD_FILE_REQUEST END");
                 SspExecutorManager.this.f3618e.remove(Integer.valueOf(m572a));
                 File file = new File(c0753a.f3621c);
-                SspExecutorManager.this.f3615b.m616h().m609a(this.f3636b.m572a()
+                SspExecutorManager.this.connection.m616h().m609a(this.f3636b.m572a()
                         , SmartSyncProtocolProtos.SSPUploadFileResponse.newBuilder()
                                 .setFile(SmartSyncProtocolProtos.SSPFile.newBuilder().setPath(c0753a.f3621c)
                                         .setFileSize(c0753a.f3620b)
@@ -237,7 +235,7 @@ public class SspExecutorManager {
                 if (c0753a.f3627i != null) {
                     c0753a.f3627i.mo576a(true);
                 }
-                ConnectionManager m617g = SspExecutorManager.this.f3615b.m617g();
+                ConnectionManager m617g = SspExecutorManager.this.connection.getConnectionManager();
                 if (!CommonUtils.m511a(m617g.m598f(), c0753a.f3619a.getUri())) {
                     m617g.m603a(c0753a.f3621c);
                 }
@@ -306,9 +304,9 @@ public class SspExecutorManager {
         /* JADX INFO: Access modifiers changed from: private */
         /* renamed from: b */
         public OutputStream m578b() {
-            SspExecutorManager.this.f3615b.m622b(true);
+            SspExecutorManager.this.connection.m622b(true);
             if (this.f3624f == null) {
-                Context applicationContext = SspExecutorManager.this.f3615b.m617g().m598f().getApplicationContext();
+                Context applicationContext = SspExecutorManager.this.connection.getConnectionManager().m598f().getApplicationContext();
                 try {
                     if (Build.VERSION.SDK_INT > 18) {
                         this.f3629k = applicationContext.getContentResolver().openAssetFileDescriptor(this.f3619a.getUri(), "w", null);
@@ -321,7 +319,7 @@ public class SspExecutorManager {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                    SspExecutorManager.this.f3615b.m622b(false);
+                    SspExecutorManager.this.connection.m622b(false);
                     SspExecutorManager.this.f3617d.m683a(this.f3620b, this.f3621c);
                 }
             }
@@ -334,7 +332,7 @@ public class SspExecutorManager {
                 HandShaker.debug(SspExecutorManager.f3614a, "delete file: " + this.f3621c + ", isExists: " + this.f3619a.exists() + ", isDir: " + this.f3619a.isDirectory());
                 if (this.f3619a.exists() && !this.f3619a.isDirectory()) {
                     this.f3619a.delete();
-                    SspExecutorManager.this.f3615b.m617g().m603a(this.f3621c);
+                    SspExecutorManager.this.connection.getConnectionManager().m603a(this.f3621c);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -366,13 +364,13 @@ public class SspExecutorManager {
                     e3.printStackTrace();
                 }
             }
-            SspExecutorManager.this.f3615b.m622b(false);
+            SspExecutorManager.this.connection.m622b(false);
         }
     }
 
     public SspExecutorManager(Connection connection) {
-        this.f3615b = connection;
-        this.f3617d = new C0736a(this.f3615b);
+        this.connection = connection;
+        this.f3617d = new C0736a(this.connection);
     }
 
     /* renamed from: a */
@@ -403,7 +401,7 @@ public class SspExecutorManager {
                 return;
             case 5:
                 HandShaker.error(f3614a, "QUIT_FLAG");
-                this.f3615b.m625a(false);
+                this.connection.m625a(false);
                 return;
             default:
                 HandShaker.error(f3614a, "Unexpected flag: " + ((int) sspPacket.m571b()));

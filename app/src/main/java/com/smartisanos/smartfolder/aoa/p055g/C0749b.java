@@ -1,10 +1,6 @@
 package com.smartisanos.smartfolder.aoa.p055g;
 
-import com.smartisanos.smartfolder.aoa.p051c.MalformedPacketException;
-import com.smartisanos.smartfolder.aoa.p051c.PacketTooLargeException;
 import com.smartisanos.smartfolder.aoa.p056h.HandShaker;
-import com.smartisanos.smartfolder.aoa.p056h.ToastHelper;
-import java.io.IOException;
 
 /* JADX INFO: Access modifiers changed from: package-private */
 /* compiled from: Connection.java */
@@ -13,11 +9,11 @@ import java.io.IOException;
 public final class C0749b extends Thread {
 
     /* renamed from: a */
-    final /* synthetic */ Connection f3598a;
+    final /* synthetic */ Connection connection;
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public C0749b(Connection connection) {
-        this.f3598a = connection;
+        this.connection = connection;
     }
 
     /* JADX WARN: Code restructure failed: missing block: B:14:0x0067, code lost:
@@ -39,12 +35,12 @@ public final class C0749b extends Thread {
                 break;
             }
             try {
-                abstractC0747b2 = this.f3598a.sspReader;
+                abstractC0747b2 = this.connection.sspReader;
                 SspPacket mo256b = abstractC0747b2.mo256b();
                 if (mo256b == null) {
                     break;
                 }
-                sspExecutorManager2 = this.f3598a.f3580d;
+                sspExecutorManager2 = this.connection.sspExecutorManager;
                 sspExecutorManager2.m584a(mo256b);
             } catch (Exception e4) {
                 e4.printStackTrace();
@@ -52,8 +48,8 @@ public final class C0749b extends Thread {
             }
         }
         HandShaker.debug(Connection.TAG, "mReaderThread stop run");
-        abstractC0747b = this.f3598a.sspReader;
+        abstractC0747b = this.connection.sspReader;
         abstractC0747b.mo268a();
-        this.f3598a.m620d();
+        this.connection.m620d();
     }
 }

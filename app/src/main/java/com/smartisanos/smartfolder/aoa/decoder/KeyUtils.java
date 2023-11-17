@@ -13,10 +13,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Arrays;
 import org.apache.http.protocol.HTTP;
-import org.bouncycastle.p058a.AbstractC0887j;
-import org.bouncycastle.p058a.C0881d;
-import org.bouncycastle.p058a.p059a.C0840a;
-import org.bouncycastle.util.encoders.Base64;
 
 /* renamed from: com.smartisanos.smartfolder.aoa.decoder.b */
 /* loaded from: classes.dex */
@@ -31,7 +27,7 @@ public final class KeyUtils {
     }
 
     /* renamed from: a */
-    public final synchronized PublicKey getPublicKey(SmartSyncProtocolProtos.SSPHandShakeRequest01 SSPHandShakeRequest01) {
+    /*public final synchronized PublicKey getPublicKey(SmartSyncProtocolProtos.SSPHandShakeRequest01 SSPHandShakeRequest01) {
         PublicKey publicKey;
         PublicKey publicKey2 = null;
         synchronized (this) {
@@ -62,7 +58,7 @@ public final class KeyUtils {
         return publicKey2;
     }
 
-    /* renamed from: a */
+    *//* renamed from: a *//*
     public final synchronized PublicKey getPublicKey(byte[] bArr) {
         PublicKey publicKey;
         PublicKey publicKey2 = null;
@@ -91,5 +87,5 @@ public final class KeyUtils {
             }
         }
         return publicKey2;
-    }
+    }*/
 }

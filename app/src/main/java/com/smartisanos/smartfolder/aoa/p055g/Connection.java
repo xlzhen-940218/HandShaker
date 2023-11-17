@@ -54,7 +54,7 @@ public class Connection {
     private Thread f3587k = new C0749b(this);
 
     /* renamed from: d */
-    public SspExecutorManager f3580d = new SspExecutorManager(this);
+    public SspExecutorManager sspExecutorManager ;
 
     /* compiled from: Connection.java */
     /* renamed from: com.smartisanos.smartfolder.aoa.g.a$a */
@@ -121,10 +121,12 @@ public class Connection {
     }
 
     public Connection(SspReader abstractC0747b, C0748c c0748c, EnumC0746a enumC0746a, ConnectionManager connectionManager) {
+
         this.sspReader = abstractC0747b;
         this.f3579c = c0748c;
         this.f3581e = enumC0746a;
         this.connectionManager = connectionManager;
+        sspExecutorManager = new SspExecutorManager(this);
         this.f3587k.start();
     }
 
@@ -151,7 +153,7 @@ public class Connection {
 
     /* renamed from: d */
     public final void m620d() {
-        this.f3580d.m588a();
+        this.sspExecutorManager.m588a();
         this.connectionManager.mo240b(this);
     }
 
@@ -162,7 +164,7 @@ public class Connection {
 
     /* renamed from: a */
     public final void m630a(int i, String str, DocumentFile documentFile, long j, long j2, SspExecutorManager.InterfaceC0754b interfaceC0754b) {
-        this.f3580d.m586a(i, str, documentFile, j, j2, interfaceC0754b);
+        this.sspExecutorManager.m586a(i, str, documentFile, j, j2, interfaceC0754b);
     }
 
     /* renamed from: f */
@@ -171,7 +173,8 @@ public class Connection {
     }
 
     /* renamed from: g */
-    public final ConnectionManager m617g() {
+    public final ConnectionManager getConnectionManager() {
+
         return this.connectionManager;
     }
 

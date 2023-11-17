@@ -87,7 +87,7 @@ public final class FileProcessor {
         this.context = context;
         this.connection = connection;
         this.f3498f = this.connection.m616h();
-        this.connectionManager = connection.m617g();
+        this.connectionManager = connection.getConnectionManager();
         this.storageManager = (StorageManager) this.context.getSystemService(Context.STORAGE_SERVICE);
     }
 

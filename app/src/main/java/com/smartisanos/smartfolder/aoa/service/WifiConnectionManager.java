@@ -184,7 +184,7 @@ public final class WifiConnectionManager extends ConnectionManager {
     /* renamed from: h */
     private NsdManager m230h() {
         if (this.f3922f == null) {
-            this.f3922f = (NsdManager) this.f3599a.getSystemService("servicediscovery");
+            this.f3922f = (NsdManager) this.context.getSystemService("servicediscovery");
         }
         return this.f3922f;
     }

@@ -62,7 +62,7 @@ public final class C0736a {
         this.f3539e = connection;
         this.f3537c = connection.m616h();
         this.f3538d = new Transfer(connection);
-        this.f3536b = new FileProcessor(connection.m617g().m598f().getApplicationContext(), this.f3539e);
+        this.f3536b = new FileProcessor(connection.getConnectionManager().m598f().getApplicationContext(), this.f3539e);
     }
 
     /* renamed from: a */
