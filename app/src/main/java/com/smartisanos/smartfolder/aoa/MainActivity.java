@@ -13,6 +13,7 @@ import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.DocumentsContract;
@@ -195,6 +196,12 @@ public class MainActivity extends AppCompatActivity implements ConnecttedFragmen
         if (!(Settings.Global.getInt(getContentResolver(), "device_provisioned", 0) != 0)) {
             finish();
             return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, 10001);
         }
         CommonUtils.getDeviceName();
         try {

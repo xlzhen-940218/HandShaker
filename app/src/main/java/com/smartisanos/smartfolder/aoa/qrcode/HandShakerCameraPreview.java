@@ -351,6 +351,7 @@ public class HandShakerCameraPreview extends ViewGroup {
             this.cameraInstance = cameraInstance;
             this.cameraInstance.setReadyHandler(this.handler);
             this.cameraInstance.open();
+
             this.f3799j = m341m();
         }
         if (this.surfaceSize != null) {
@@ -409,6 +410,7 @@ public class HandShakerCameraPreview extends ViewGroup {
         if (!this.f3797h && this.cameraInstance != null) {
             Log.i(TAG, "Starting preview");
             this.cameraInstance.setSurface(cameraSurface);
+            this.cameraInstance.open();
             this.cameraInstance.startPreview();
             this.f3797h = true;
             mo357b();
